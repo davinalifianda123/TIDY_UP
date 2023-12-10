@@ -84,13 +84,13 @@ void saveTasksToFile(struct Task tasks[], int totalTasks) {
 void loadTasksFromFile(struct Task tasks[], int *totalTasks) {
     FILE *file = fopen(FILE_NAME, "r");
     if (file == NULL) {
-        return;  // File belum ada atau gagal dibuka, maka tidak ada data yang perlu di-load.
+        return;
     }
 
     while (fscanf(file, "%d;%49[^;];%99[^;];%19[^\n]\n", &tasks[*totalTasks].isCompleted, tasks[*totalTasks].title, tasks[*totalTasks].description, tasks[*totalTasks].deadline) == 4) {
         (*totalTasks)++;
         if (*totalTasks >= MAX_TASKS) {
-            break;  // Maksimum tugas tercapai, hentikan pembacaan.
+            break;
         }
     }
 
